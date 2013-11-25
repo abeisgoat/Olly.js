@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Olly Example</title>
+        <script src="../src/olly.js"></script>
+        <script src="../src/parser.js"></script>
+        <script src="../src/templates.js"></script>
+        <script src="../src/structures.js"></script>
+        <script src="../src/render.js"></script>
+    </head>
+    <body>
+        <h1>Olly Examples</h1>
+        
+        <h2>Youtube</h2>
+        <h3>Original String</h3>
+        "https://www.youtube.com/watch?v=x-8QAFqAAJ8"
+        <h3>Output</h3>
+        <div id="youtube"></div>
+        <script>olly.embed("https://www.youtube.com/watch?v=x-8QAFqAAJ8", document.getElementById("youtube"));</script>
+        
+        <h2>Vimeo</h2>
+        <h3>Original String</h3>
+        "http://vimeo.com/78276911"
+        <h3>Output</h3>
+        <div id="vimeo"></div>
+        <script>olly.embed("http://vimeo.com/78276911", document.getElementById("vimeo"));</script>
+        
+        <h2>Github (Repo)</h2>
+        <h3>Original String</h3>
+        "https://github.com/abeisgreat/olly"
+        <h3>Output</h3>
+        <div id="github-repo"></div>
+        <script>olly.embed("https://github.com/abeisgreat/olly", document.getElementById("github-repo"));</script> 
+        
+        <h2>Imgur</h2>
+        <h3>Original String</h3>
+        "http://imgur.com/62K49JD"
+        <h3>Output</h3>
+        <div id="imgur"></div>
+        <script>olly.embed("http://imgur.com/62K49JD", document.getElementById("imgur"));</script>
+        
+        <h2>jsFiddle</h2>
+        <h3>Original String</h3>
+        "http://jsfiddle.net/zalun/NmudS/"
+        <h3>Output</h3>
+        <div id="jsfiddle"></div>
+        <script>olly.embed("http://jsfiddle.net/zalun/NmudS/", document.getElementById("jsfiddle"));</script>
+        
+        <h2>Twitter (Tweet)</h2>
+        <h3>Original String</h3>
+        "https://twitter.com/TheNateK/status/404049102322671616"
+        <h3>Output</h3>
+        <div id="twitter-tweet"></div>
+        <script>olly.embed("https://twitter.com/TheNateK/status/404049102322671616", document.getElementById("twitter-tweet"));</script> 
+        
+        <!--
+        <h2>Twitter (Timeline)</h2>
+        <h3>Original String</h3>
+        "https://twitter.com/TheNateK/"
+        <h3>Output</h3>
+        <div id="twitter-timeline"></div>
+        <script>olly.embed("https://twitter.com/TheNateK/", document.getElementById("twitter-timeline"));</script>-->
+        
+    </body>
+</html>
