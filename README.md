@@ -3,6 +3,11 @@ Olly
 
 A JavaScript library to convert URLs into embedable HTML.
 
+Example
+-------
+
+[Live Demo](http://abeisgreat.github.io/olly/markup/example.html)
+
 Usage
 -----
 After being included with a `<script>` tag, Olly exposes the `olly` object globally. This object has one important method `olly.embed`. This method takes, at a minimum, a URL from a supported service and returns the code nessacary to embed the rich media from that URL in your page. For example, a link to a Youtube video will provide you with the markup needed to embed the player in your page:
@@ -21,8 +26,5 @@ Supported Services
 * Twitter Tweets
 * Imgur
 * Vimeo
-
-
-
 
 *... and any other, pull requests are appreciated!*
