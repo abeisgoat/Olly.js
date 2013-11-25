@@ -1,0 +1,25 @@
+{
+  "name": "Olly",
+  "version": "0.0.0",
+  "description": "A JavaScript library to convert URLs into embedable HTML.",
+  "main": "src/olly.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abeisgreat/olly.git"
+  },
+  "author": "Abraham Haskins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abeisgreat/olly/issues"
+  },
+  "homepage": "https://github.com/abeisgreat/olly",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-uglify": "~0.2.7"
+  }
+}
