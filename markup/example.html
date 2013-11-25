@@ -7,6 +7,7 @@
         <script src="../src/templates.js"></script>
         <script src="../src/structures.js"></script>
         <script src="../src/render.js"></script>
+        <script src="../src/promise.js"></script>
     </head>
     <body>
         <h1>Olly Examples</h1>
@@ -52,6 +53,13 @@
         <h3>Output</h3>
         <div id="twitter-tweet"></div>
         <script>olly.embed("https://twitter.com/TheNateK/status/404049102322671616", document.getElementById("twitter-tweet"));</script> 
+        
+        <h2>Reddit (Subreddit)</h2>
+        <h3>Original String</h3>
+        "http://www.reddit.com/r/aquariums"
+        <h3>Output</h3>
+        <div id="reddit-subreddit"></div>
+        <script>olly.embed("http://www.reddit.com/r/aquariums", document.getElementById("reddit-subreddit"));</script> 
         
         <!--
         <h2>Twitter (Timeline)</h2>

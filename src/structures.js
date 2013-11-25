@@ -64,6 +64,27 @@
                 }
             };
             return structure;
+        },
+        
+        // Reddit Repo Structure
+        reddit: function (URL) {
+            var deferred, structure, callbackName;
+            
+            callbackName = '_reddit_' + URL.pathchunks[1];
+            
+            deferred = olly.defer();
+            window[callbackName] = function (markup) {
+                deferred.resolve({markup: markup});
+            };
+            
+            structure = {
+                templatePromise: deferred.promise,
+                data: {
+                    JSONPURL: 'http://www.reddit.com/r/' + URL.pathchunks[1] + '/hot/.embed',
+                    callbackName: callbackName
+                }
+            };
+            return structure;
         }
     };
     

@@ -23,6 +23,7 @@ Supported Services
 * Youtube
 * Github Repos
 * jsFiddle
+* Reddit Subreddits
 * Twitter Tweets
 * Imgur
 * Vimeo

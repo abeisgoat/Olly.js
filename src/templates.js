@@ -21,6 +21,11 @@
                 'https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
                 'https://raw.github.com/abeisgreat/GitHub-jQuery-Repo-Widget/master/jquery.githubRepoWidget.js'
             ]
+        },
+        reddit: {
+            scripts: [
+                "{{JSONPURL}}?limit=5&callback={{callbackName}}"
+            ]
         }
     };
     
