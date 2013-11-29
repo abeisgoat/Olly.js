@@ -3,50 +3,50 @@
     "use strict";
     
     olly.render = function (element, URL) {
-        var src, domain, field, structure, templateObj, scriptIndex;
+        var src, domain, domainName, field, domain, templateObj, scriptIndex;
         
-        domain = this.findDomain(URL);
+        domainName = this.findDomain(URL);
         
-        if (!domain) {
+        if (!domainName) {
             return "";
         }
         
-        structure = this.structures[domain](URL);
-        templateObj = this.templates[structure.template || domain];
+        domain = this.domains[domainName](URL);
+        templateObj = this.templates[domain.template || domainName];
         
         if (templateObj.scripts) {
             for (scriptIndex = 0; scriptIndex < templateObj.scripts.length; scriptIndex += 1) {
                 src = templateObj.scripts[scriptIndex];
-                this.loadScript(element, olly.generate(src, structure.data));
+                this.loadScript(element, olly.generate(src, domain.data));
             }
         }
         
-        if (structure.templatePromise) {
-            structure.templatePromise.then(function (templateObj) {
-                this.display(templateObj, structure.data, element);
+        if (domain.templatePromise) {
+            domain.templatePromise.then(function (templateObj) {
+                this.display(templateObj, domain.data, element);
             });
         } else {
-            this.display(templateObj, structure.data, element);
+            this.display(templateObj, domain.data, element);
         }
         
         return true;
     };
     
     olly.findDomain = function (URL) {
-        var domain, domainIndex, domains;
+        var domainName, domainNameIndex, domainNames;
 
-        domains = URL.hostname.split('.');
+        domainNames = URL.hostname.split('.');
         
-        for (domainIndex in domains) {
-            domain = domains[domainIndex];
-            if (this.structures[domain] !== undefined) {
+        for (domainNameIndex in domainNames) {
+            domainName = domainNames[domainNameIndex];
+            if (this.domains[domainName] !== undefined) {
                 break;
             }
         }
         
-        if (!domain) { return false; }
+        if (!domainName) { return false; }
         
-        return domain;
+        return domainName;
     };
     
     olly.loadScript = function (element, src) {

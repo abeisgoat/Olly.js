@@ -18,15 +18,14 @@
         github: {
             markup: '<div class="github-widget" data-repo="{{repo}}"></div>',
             scripts: [
-                'https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
-                'https://raw.github.com/abeisgreat/GitHub-jQuery-Repo-Widget/master/jquery.githubRepoWidget.js'
+                'http://abeisgreat.github.io/Github-Repo-Widget/githubRepoWidget.min.js'
             ]
         },
         reddit: {
             scripts: [
                 "{{JSONPURL}}?limit=5&callback={{callbackName}}"
             ]
-        }
+        },
     };
     
 }(window.olly));

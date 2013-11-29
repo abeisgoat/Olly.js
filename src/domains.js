@@ -1,8 +1,8 @@
 /*global window */
 (function (olly) {
     "use strict";
-
-    olly.structures = {
+    
+    olly.domains = {
         // Youtube.com Video Structure
         youtube: function (URL) {
             var structure = {
@@ -55,7 +55,7 @@
             };
             return structure;
         },
-    
+        
         // Github Repo Structure
         github: function (URL) {
             var structure = {
@@ -68,19 +68,28 @@
         
         // Reddit Repo Structure
         reddit: function (URL) {
-            var deferred, structure, callbackName;
+            var deferred, structure, callbackName, template, JSONPURL, template;
             
             callbackName = '_reddit_' + URL.pathchunks[1];
+            template = URL.pathchunks.indexOf("user") != -1 ? "reddit_user" : "reddit_subreddit";
+            
+            if (template == "reddit_subreddit") {
+                JSONPURL = 'http://www.reddit.com/r/' + URL.pathchunks[1] + '/hot/.embed';
+            }
+            
+            if (template == "reddit_user") {
+                JSONPURL = 'http://www.reddit.com/user/' + URL.pathchunks[1] + '/submitted.embed';
+            }
             
             deferred = olly.defer();
             window[callbackName] = function (markup) {
                 deferred.resolve({markup: markup});
             };
-            
+
             structure = {
                 templatePromise: deferred.promise,
                 data: {
-                    JSONPURL: 'http://www.reddit.com/r/' + URL.pathchunks[1] + '/hot/.embed',
+                    JSONPURL: JSONPURL,
                     callbackName: callbackName
                 }
             };

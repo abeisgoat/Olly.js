@@ -5,7 +5,7 @@
         <script src="../src/olly.js"></script>
         <script src="../src/parser.js"></script>
         <script src="../src/templates.js"></script>
-        <script src="../src/structures.js"></script>
+        <script src="../src/domains.js"></script>
         <script src="../src/render.js"></script>
         <script src="../src/promise.js"></script>
     </head>
@@ -60,6 +60,13 @@
         <h3>Output</h3>
         <div id="reddit-subreddit"></div>
         <script>olly.embed("http://www.reddit.com/r/aquariums", document.getElementById("reddit-subreddit"));</script> 
+        
+        <h2>Reddit (User)</h2>
+        <h3>Original String</h3>
+        "http://www.reddit.com/user/mistersavage"
+        <h3>Output</h3>
+        <div id="reddit-user"></div>
+        <script>olly.embed("http://www.reddit.com/user/mistersavage", document.getElementById("reddit-user"));</script> 
         
         <!--
         <h2>Twitter (Timeline)</h2>
