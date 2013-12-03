@@ -14,6 +14,10 @@
         domain = this.domains[domainName](URL);
         templateObj = this.templates[domain.template || domainName];
         
+        this.load('http://www.ustream.tv/oembed?url=http://www.ustream.tv/channel/americatv2oficial').then(function (data) {
+            console.log(data); 
+        });
+        
         if (templateObj.scripts) {
             for (scriptIndex = 0; scriptIndex < templateObj.scripts.length; scriptIndex += 1) {
                 src = templateObj.scripts[scriptIndex];
@@ -49,6 +53,22 @@
         return domainName;
     };
     
+    olly.load = function (src) {
+        var deferred = deferred = olly.defer();
+        
+        function reqListener () {
+            console.log(this.responseText);
+            deferred.resolve('hello!')
+        };
+        
+        var xhr = new XMLHttpRequest();
+        xhr.onload = reqListener;
+        xhr.open("get", src, true);
+        xhr.send(); 
+        
+        return deferred.promise;
+    };
+    
     olly.loadScript = function (element, src) {
         var script;
         script = document.createElement('script');
@@ -69,7 +89,7 @@
         var field, output;
         output = template;
         for (field in data) {
-            output = output.replace(new RegExp("{{" + field + "}}"), data[field]);
+            output = output.replace(new RegExp("{{" + field + "}}", "g"), data[field]);
         }
         return output;
     };

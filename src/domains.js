@@ -94,6 +94,33 @@
                 }
             };
             return structure;
+        },
+        
+        // Soundcloud Structure
+        soundcloud: function (URL) {
+            return {
+                data: {
+                    embedURL: URL.url
+                }
+            }   
+        },
+        
+        // Twitch Structure
+        twitch: function (URL) {
+            return {
+                data: {
+                    channel: URL.pathchunks[0]
+                }
+            }   
+        },
+        
+        // Speakerdeck Structure
+        speakerdeck: function (URL) {
+            return {
+                data: {
+                    presentationURL: 'https://speakerdeck.com/addyosmani/automating-front-end-workflow'
+                }
+            }
         }
     };
     
