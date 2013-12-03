@@ -28,12 +28,12 @@ Supported Services
 * Twitch.TV
 * Soundcloud
 
-** Other **
+**Other**
 
 * Github Repos
 * jsFiddle
 
-** Social **
+**Social**
 
 * Reddit Subreddits and Users
 * Twitter Tweets
