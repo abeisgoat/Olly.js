@@ -20,18 +20,22 @@ This will fill `#youtube` with the following markup.
     
 Supported Services
 ------------------
+
+**Video**
+
 * Youtube
 * Vimeo
 * Twitch.TV
 * Soundcloud
 
+** Other **
+
 * Github Repos
 * jsFiddle
 
+** Social **
+
 * Reddit Subreddits and Users
 * Twitter Tweets
-
-* Imgur
-
 
 *... and any other you want to implement, pull requests are appreciated!*
