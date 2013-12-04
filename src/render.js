@@ -3,7 +3,7 @@
     "use strict";
     
     olly.render = function (element, URL) {
-        var src, domain, domainName, field, domain, templateObj, scriptIndex;
+        var src, domain, domainName, field, templateObj, scriptIndex;
         
         domainName = this.findDomain(URL);
         
@@ -54,12 +54,11 @@
     };
     
     olly.load = function (src) {
-        var deferred = deferred = olly.defer();
+        var deferred = olly.defer();
         
-        function reqListener () {
-            console.log(this.responseText);
-            deferred.resolve('hello!')
-        };
+        function reqListener (res) {
+            deferred.resolve(res.responseText);
+        }
         
         var xhr = new XMLHttpRequest();
         xhr.onload = reqListener;

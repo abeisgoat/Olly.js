@@ -68,7 +68,7 @@
         
         // Reddit Repo Structure
         reddit: function (URL) {
-            var deferred, structure, callbackName, template, JSONPURL, template;
+            var deferred, structure, callbackName, template, JSONPURL;
             
             callbackName = '_reddit_' + URL.pathchunks[1];
             template = URL.pathchunks.indexOf("user") != -1 ? "reddit_user" : "reddit_subreddit";
@@ -102,7 +102,7 @@
                 data: {
                     embedURL: URL.url
                 }
-            }   
+            };
         },
         
         // Twitch Structure
@@ -111,7 +111,7 @@
                 data: {
                     channel: URL.pathchunks[0]
                 }
-            }   
+            };
         },
         
         // Speakerdeck Structure
@@ -120,7 +120,7 @@
                 data: {
                     presentationURL: 'https://speakerdeck.com/addyosmani/automating-front-end-workflow'
                 }
-            }
+            };
         }
     };
     
