@@ -1,3 +1,121 @@
+/*global window, document */
+(function () {
+    "use strict";
+    
+    var Olly = function () {
+        this.murs = true;
+        
+        this.embed = function (URLString, element, attributes) {
+            var URL, renderedObj;
+            
+            URL = this.parseURL(URLString);
+            this.render(element, URL);
+            
+            return true;
+        };
+    };
+    
+    window.olly = new Olly();
+    
+}());
+/*global window, document */
+(function (olly) {
+    "use strict";
+    
+    //Inspired from https://gist.github.com/jlong/2428561
+    olly.parseURL = function (URLString) {
+        var cleanPathchunks, parser, pathchunks, pathchunkIndex, query, queryIndex, querypairs, querypair, querystring;
+        
+        parser = document.createElement('a');
+        parser.href = URLString;
+        //parser.href = "http://example.com:3000/pathname/?search=test#hash";
+        
+        query = {};
+        cleanPathchunks = [];
+        
+        if (parser.search[0] === "?") {
+            querystring = parser.search.slice(1, parser.search.length);
+            querypairs = querystring.split("&");
+            for (queryIndex = 0; queryIndex < querypairs.length; queryIndex += 1) {
+                querypair = querypairs[queryIndex].split("=");
+                query[querypair[0]] = querypair[1];
+            }
+        }
+        
+        if (parser.pathname !== "") {
+            pathchunks = parser.pathname.split("/");
+            for (pathchunkIndex = 0; pathchunkIndex < pathchunks.length; pathchunkIndex += 1) {
+                if (pathchunks[pathchunkIndex]) {
+                    cleanPathchunks.push(pathchunks[pathchunkIndex]);
+                }
+            }
+        }
+        
+        return {
+            url: URLString,               // => "http://example.com:3000/pathname/?search=test#hash"
+            protocol: parser.protocol,    // => "http:"
+            hostname: parser.hostname,    // => "example.com"
+            port: parser.port,            // => "3000"
+            pathname: parser.pathname,    // => "/pathname/"
+            pathchunks: cleanPathchunks,  // => ["pathname"]
+            querystring: parser.search,   // => "?search=test"
+            query: query,                 // => {search: "test"}
+            hash: parser.hash,            // => "#hash"
+            host: parser.host             // => "example.com:3000"
+        };
+    };
+    
+}(window.olly));
+/*global window */
+(function (olly) {
+    "use strict";
+
+    olly.templates = {
+        youtube: '<embed width="420" height="345" src="{{embedURL}}" type="application/x-shockwave-flash"></embed>',
+        
+        vimeo: '<iframe src="{{embedURL}}" width="420" height="345" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
+        
+        imgur: '<img src="{{embedURL}}" />',
+        
+        jsfiddle: '<iframe style="width: 100%; height: 300px" src="{{embedURL}}"></iframe>',
+        
+        twitter_tweet: {
+            markup: '<blockquote class="twitter-tweet" lang="en"><p> <a href="{{embedURL}}"></a></blockquote>',
+            scripts: ['//platform.twitter.com/widgets.js']
+        },
+        
+        twitter_timeline: {
+            markup: '<a class="twitter-timeline" href="{{embedURL}}"></a>',
+            scripts: ['//platform.twitter.com/widgets.js']
+        },
+        
+        github: {
+            markup: '<div class="github-widget" data-repo="{{repo}}"></div>',
+            scripts: [
+                'http://abeisgreat.github.io/Github-Repo-Widget/githubRepoWidget.min.js'
+            ]
+        },
+        
+        reddit: {
+            scripts: [
+                "{{JSONPURL}}?limit=5&callback={{callbackName}}"
+            ]
+        },
+        
+        soundcloud: '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url={{embedURL}}"></iframe>',
+        
+        twitch: '<object type="application/x-shockwave-flash" height="378" width="620" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{channel}}" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel={{channel}}&auto_play=true&start_volume=25" /></object>',
+        
+        speakerdeck: {
+            markup: '<script async class="speakerdeck-embed" data-id="{{dataId}}" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>',
+            scripts: [
+                'https://speakerdeck.com/oembed.json?url={{presentationURL}}'
+            ]
+        }
+        
+    };
+    
+}(window.olly));
 /*global window */
 (function (olly) {
     "use strict";
@@ -125,107 +243,6 @@
     };
     
 }(window.olly));
-/*global window, document */
-(function () {
-    "use strict";
-    
-    var Olly = function () {
-        this.murs = true;
-        
-        this.embed = function (URLString, element, attributes) {
-            var URL, renderedObj;
-            
-            URL = this.parseURL(URLString);
-            this.render(element, URL);
-            
-            return true;
-        };
-    };
-    
-    window.olly = new Olly();
-    
-}());
-/*global window, document */
-(function (olly) {
-    "use strict";
-    
-    //Inspired from https://gist.github.com/jlong/2428561
-    olly.parseURL = function (URLString) {
-        var cleanPathchunks, parser, pathchunks, pathchunkIndex, query, queryIndex, querypairs, querypair, querystring;
-        
-        parser = document.createElement('a');
-        parser.href = URLString;
-        //parser.href = "http://example.com:3000/pathname/?search=test#hash";
-        
-        query = {};
-        cleanPathchunks = [];
-        
-        if (parser.search[0] === "?") {
-            querystring = parser.search.slice(1, parser.search.length);
-            querypairs = querystring.split("&");
-            for (queryIndex = 0; queryIndex < querypairs.length; queryIndex += 1) {
-                querypair = querypairs[queryIndex].split("=");
-                query[querypair[0]] = querypair[1];
-            }
-        }
-        
-        if (parser.pathname !== "") {
-            pathchunks = parser.pathname.split("/");
-            for (pathchunkIndex = 0; pathchunkIndex < pathchunks.length; pathchunkIndex += 1) {
-                if (pathchunks[pathchunkIndex]) {
-                    cleanPathchunks.push(pathchunks[pathchunkIndex]);
-                }
-            }
-        }
-        
-        return {
-            url: URLString,               // => "http://example.com:3000/pathname/?search=test#hash"
-            protocol: parser.protocol,    // => "http:"
-            hostname: parser.hostname,    // => "example.com"
-            port: parser.port,            // => "3000"
-            pathname: parser.pathname,    // => "/pathname/"
-            pathchunks: cleanPathchunks,  // => ["pathname"]
-            querystring: parser.search,   // => "?search=test"
-            query: query,                 // => {search: "test"}
-            hash: parser.hash,            // => "#hash"
-            host: parser.host             // => "example.com:3000"
-        };
-    };
-    
-}(window.olly));
-/*global window, document */
-(function (olly) {
-    "use strict";
-    
-    //Inspired by Q promises, but done simpler for size
-    olly.defer = function () {
-        var local = {};
-        
-        local.promise = {
-            then: function (callback) {
-                local.callback = callback;
-                if (local.resolved) {
-                    local.finish();
-                }
-            }
-        };
-        
-        local.resolve = function () {
-            local.args = arguments;
-            if (local.callback) {
-                local.finish();
-            }
-            local.resolved = true;
-        };
-        
-        local.finish = function () {
-            local.callback.apply(olly, local.args);
-        };
-        
-        return local;
-    };
-    
-}(window.olly));
 /*global window */
 (function (olly, document) {
     "use strict";
@@ -321,53 +338,36 @@
         return output;
     };
 }(window.olly, window.document));
-/*global window */
+/*global window, document */
 (function (olly) {
     "use strict";
-
-    olly.templates = {
-        youtube: '<embed width="420" height="345" src="{{embedURL}}" type="application/x-shockwave-flash"></embed>',
+    
+    //Inspired by Q promises, but done simpler for size
+    olly.defer = function () {
+        var local = {};
         
-        vimeo: '<iframe src="{{embedURL}}" width="420" height="345" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
+        local.promise = {
+            then: function (callback) {
+                local.callback = callback;
+                if (local.resolved) {
+                    local.finish();
+                }
+            }
+        };
         
-        imgur: '<img src="{{embedURL}}" />',
+        local.resolve = function () {
+            local.args = arguments;
+            if (local.callback) {
+                local.finish();
+            }
+            local.resolved = true;
+        };
         
-        jsfiddle: '<iframe style="width: 100%; height: 300px" src="{{embedURL}}"></iframe>',
+        local.finish = function () {
+            local.callback.apply(olly, local.args);
+        };
         
-        twitter_tweet: {
-            markup: '<blockquote class="twitter-tweet" lang="en"><p> <a href="{{embedURL}}"></a></blockquote>',
-            scripts: ['//platform.twitter.com/widgets.js']
-        },
-        
-        twitter_timeline: {
-            markup: '<a class="twitter-timeline" href="{{embedURL}}"></a>',
-            scripts: ['//platform.twitter.com/widgets.js']
-        },
-        
-        github: {
-            markup: '<div class="github-widget" data-repo="{{repo}}"></div>',
-            scripts: [
-                'http://abeisgreat.github.io/Github-Repo-Widget/githubRepoWidget.min.js'
-            ]
-        },
-        
-        reddit: {
-            scripts: [
-                "{{JSONPURL}}?limit=5&callback={{callbackName}}"
-            ]
-        },
-        
-        soundcloud: '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url={{embedURL}}"></iframe>',
-        
-        twitch: '<object type="application/x-shockwave-flash" height="378" width="620" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{channel}}" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel={{channel}}&auto_play=true&start_volume=25" /></object>',
-        
-        speakerdeck: {
-            markup: '<script async class="speakerdeck-embed" data-id="{{dataId}}" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>',
-            scripts: [
-                'https://speakerdeck.com/oembed.json?url={{presentationURL}}'
-            ]
-        }
-        
+        return local;
     };
     
 }(window.olly));

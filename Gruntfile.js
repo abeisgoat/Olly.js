@@ -7,7 +7,14 @@ module.exports = function (grunt) {
     },
     concat: {
         dist: {
-          src: 'src/*.js',
+          src: [
+            "src/olly.js",
+            "src/parser.js",
+            "src/templates.js",
+            "src/domains.js",
+            "src/render.js",
+            "src/promise.js"
+          ],
           dest: 'dist/olly.js',
         }
     },
