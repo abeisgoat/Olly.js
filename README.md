@@ -39,3 +39,6 @@ Supported Services
 * Twitter Tweets
 
 *... and any other you want to implement, pull requests are appreciated!*
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/abeisgreat/olly/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
