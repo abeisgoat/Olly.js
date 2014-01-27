@@ -259,10 +259,6 @@
         domain = this.domains[domainName](URL);
         templateObj = this.templates[domain.template || domainName];
         
-        this.load('http://www.ustream.tv/oembed?url=http://www.ustream.tv/channel/americatv2oficial').then(function (data) {
-            console.log(data); 
-        });
-        
         if (templateObj.scripts) {
             for (scriptIndex = 0; scriptIndex < templateObj.scripts.length; scriptIndex += 1) {
                 src = templateObj.scripts[scriptIndex];

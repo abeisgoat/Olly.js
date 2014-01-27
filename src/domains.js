@@ -114,6 +114,15 @@
             };
         },
         
+        // Gfycat Structure
+        gfycat: function (URL) {
+            return {
+                data: {
+                    embedID: URL.pathchunks[0]
+                }
+            };
+        },
+        
         // Speakerdeck Structure
         speakerdeck: function (URL) {
             return {

@@ -28,6 +28,10 @@ Supported Services
 * Twitch.TV
 * Soundcloud
 
+**Images**
+
+* Gfycat
+
 **Other**
 
 * Github Repos
