@@ -30,6 +30,7 @@ Supported Services
 
 **Images**
 
+* Imgur
 * Gfycat
 
 **Other**
