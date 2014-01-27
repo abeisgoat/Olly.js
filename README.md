@@ -26,6 +26,8 @@ Supported Services
 * Youtube
 * Vimeo
 * Twitch.TV
+
+**Audio**
 * Soundcloud
 
 **Images**
@@ -33,14 +35,14 @@ Supported Services
 * Imgur
 * Gfycat
 
-**Other**
-
-* Github Repos
-* jsFiddle
-
 **Social**
 
 * Reddit Subreddits and Users
 * Twitter Tweets
+
+**Other**
+
+* Github Repos
+* jsFiddle
 
 *... and any other you want to implement, pull requests are appreciated!*
