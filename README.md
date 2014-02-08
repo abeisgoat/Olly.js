@@ -57,9 +57,9 @@ Supported File Types
 
 **Images**
 
-*JPG
-*PNG
-*BMP
-*GIF
+* JPG
+* PNG
+* BMP
+* GIF
 
 *... and any other you want to implement, pull requests are appreciated!*
