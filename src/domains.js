@@ -121,15 +121,6 @@
                     embedID: URL.pathchunks[0]
                 }
             };
-        },
-        
-        // Speakerdeck Structure
-        speakerdeck: function (URL) {
-            return {
-                data: {
-                    presentationURL: 'https://speakerdeck.com/addyosmani/automating-front-end-workflow'
-                }
-            };
         }
     };
     

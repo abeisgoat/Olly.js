@@ -3,34 +3,31 @@
     "use strict";
     
     olly.render = function (element, URL) {
-        var src, domain, domainName, field, templateObj, scriptIndex;
+        var src, definition, domainName, extensionName, field, templateObj, scriptIndex;
         
         domainName = this.findDomain(URL);
+        extensionName = this.findExtension(URL);
         
-        if (!domainName) {
+        if (!domainName && !extensionName) {
             return "";
         }
         
-        domain = this.domains[domainName](URL);
-        templateObj = this.templates[domain.template || domainName];
-        
-        this.load('http://www.ustream.tv/oembed?url=http://www.ustream.tv/channel/americatv2oficial').then(function (data) {
-            console.log(data); 
-        });
+        definition = (this.domains[domainName] || this.extensions[extensionName])(URL);
+        templateObj = this.templates[definition.template || domainName || extensionName];
         
         if (templateObj.scripts) {
             for (scriptIndex = 0; scriptIndex < templateObj.scripts.length; scriptIndex += 1) {
                 src = templateObj.scripts[scriptIndex];
-                this.loadScript(element, olly.generate(src, domain.data));
+                this.loadScript(element, olly.generate(src, definition.data));
             }
         }
         
-        if (domain.templatePromise) {
-            domain.templatePromise.then(function (templateObj) {
-                this.display(templateObj, domain.data, element);
+        if (definition.templatePromise) {
+            definition.templatePromise.then(function (templateObj) {
+                this.display(templateObj, definition.data, element);
             });
         } else {
-            this.display(templateObj, domain.data, element);
+            this.display(templateObj, definition.data, element);
         }
         
         return true;
@@ -48,9 +45,18 @@
             }
         }
         
-        if (!domainName) { return false; }
+        if (!this.domains[domainName]) { return false; }
         
         return domainName;
+    };
+    
+    olly.findExtension = function (URL) {
+        var extensionName, splitPath;
+
+        splitPath = URL.pathname.split('.');
+        extensionName = splitPath[splitPath.length-1];
+        
+        return this.extensions[extensionName]? extensionName : false;
     };
     
     olly.load = function (src) {

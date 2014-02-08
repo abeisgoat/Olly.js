@@ -45,13 +45,13 @@
             ]
         },
         
-        speakerdeck: {
-            markup: '<script async class="speakerdeck-embed" data-id="{{dataId}}" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>',
-            scripts: [
-                'https://speakerdeck.com/oembed.json?url={{presentationURL}}'
-            ]
-        }
+        video: {
+            markup: '<video src="{{embedURL}}" controls="true" autoplay loop></video>'   
+        },
         
+        image: {
+            markup: '<img src="{{embedURL}}" />'   
+        }
     };
     
 }(window.olly));

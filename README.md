@@ -28,6 +28,7 @@ Supported Services
 * Twitch.TV
 
 **Audio**
+
 * Soundcloud
 
 **Images**
@@ -44,5 +45,21 @@ Supported Services
 
 * Github Repos
 * jsFiddle
+
+Supported File Types
+------------------
+
+**Video**
+
+* MP4
+* WebM
+* OGV
+
+**Images**
+
+*JPG
+*PNG
+*BMP
+*GIF
 
 *... and any other you want to implement, pull requests are appreciated!*
