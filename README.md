@@ -62,4 +62,9 @@ Supported File Types
 * BMP
 * GIF
 
+**Audio**
+
+* MP3
+* OGG
+
 *... and any other you want to implement, pull requests are appreciated!*

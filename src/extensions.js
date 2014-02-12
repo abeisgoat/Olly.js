@@ -21,6 +21,16 @@
                     embedURL: URL.url
                 }
             };
+        },
+        
+        // HTML5 Video Structure
+        "audio": function (URL) {
+            return {
+                template: 'audio',
+                data: {
+                    embedURL: URL.url
+                }
+            };
         }
     };
     
@@ -33,5 +43,8 @@
     olly.extensions.mp4 = olly.extensions.video;
     olly.extensions.ogv = olly.extensions.video;
     olly.extensions.webm = olly.extensions.video;
+    
+    olly.extensions.ogg = olly.extensions.audio;
+    olly.extensions.mp3 = olly.extensions.audio;
     
 }(window.olly));

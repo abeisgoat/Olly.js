@@ -2,13 +2,13 @@
 (function (olly, document) {
     "use strict";
     
-    olly.render = function (element, URL) {
+    olly.render = function (element, URL, services) {
         var src, definition, domainName, extensionName, field, templateObj, scriptIndex;
         
         domainName = this.findDomain(URL);
         extensionName = this.findExtension(URL);
         
-        if (!domainName && !extensionName) {
+        if ((!domainName && !extensionName) || (services || {})[domainName] == olly.TEXT) {
             return "";
         }
         

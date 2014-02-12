@@ -13,6 +13,17 @@
     <body>
         <h1>Olly Examples</h1>
         
+        <h2>Text Blob</h2>
+        <h3>Original String</h3>
+        "Hi, welcome to my site, please watch <a href='https://www.youtube.com/watch?v=x-8QAFqAAJ8'>this awesome video</a>:<br /> 
+        https://www.youtube.com/watch?v=x-8QAFqAAJ8<br />
+        Also, feel free to check out this cool code example:<br />
+        http://jsfiddle.net/zalun/NmudS/<br />
+        Thanks! All the best, Abe"
+        <h3>Output</h3>
+        <div id="blob"></div>
+        <script>olly.richify("Hi, welcome to my site, please watch <a href='https://www.youtube.com/watch?v=x-8QAFqAAJ8'>this awesome video</a>:<br />https://www.youtube.com/watch?v=x-8QAFqAAJ8<br />Also, feel free to check out this cool code example:<br />   http://jsfiddle.net/zalun/NmudS/<br /> Thanks! All the best, Abe", document.getElementById("blob"), {youtube: olly.EMBED, jsfiddle: olly.LINK});</script>
+        
         <h2>Youtube</h2>
         <h3>Original String</h3>
         "https://www.youtube.com/watch?v=x-8QAFqAAJ8"
