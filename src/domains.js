@@ -23,6 +23,16 @@
             return structure;
         },
         
+        // Dotsub.com Video Structure
+        dotsub: function (URL) {
+            var structure = {
+                data: {
+                   embedURL: '//dotsub.com/media/' + URL.pathchunks[1] + '/embed/'
+                }
+            };
+            return structure;
+        },
+        
         // Imgur Image Structure
         imgur: function (URL) {
             var structure = {
