@@ -1,5 +1,5 @@
-Olly
-====
+Olly.js (1.0)
+=======
 
 A JavaScript library to convert URLs into embedable HTML.
 
