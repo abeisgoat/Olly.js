@@ -6,7 +6,7 @@ A JavaScript library to convert URLs into embedable HTML.
 Example
 -------
 
-[Live Demo](http://abeisgreat.github.io/olly/markup/example.html)
+[Live Demo](http://abeisgreat.github.io/Olly.js/markup/example.html)
 
 Usage
 -----
