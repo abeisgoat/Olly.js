@@ -7,6 +7,8 @@
         
         vimeo: '<iframe src="{{embedURL}}" width="420" height="345" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
         
+        dotsub: '<iframe src="{{embedURL}}" frameborder="0" width="420" height="345"></iframe> ',
+        
         imgur: '<img src="{{embedURL}}" />',
         
         jsfiddle: '<iframe style="width: 100%; height: 300px" src="{{embedURL}}"></iframe>',
