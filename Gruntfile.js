@@ -12,6 +12,7 @@ module.exports = function (grunt) {
             "src/parser.js",
             "src/templates.js",
             "src/domains.js",
+            "src/extensions.js",
             "src/render.js",
             "src/promise.js"
           ],
