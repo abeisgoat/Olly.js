@@ -124,6 +124,8 @@
         
         vimeo: '<iframe src="{{embedURL}}" width="420" height="345" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
         
+        dotsub: '<iframe src="{{embedURL}}" frameborder="0" width="420" height="345"></iframe> ',
+        
         imgur: '<img src="{{embedURL}}" />',
         
         jsfiddle: '<iframe style="width: 100%; height: 300px" src="{{embedURL}}"></iframe>',
@@ -192,6 +194,16 @@
             var structure = {
                 data: {
                     embedURL: '//player.vimeo.com/video/' + URL.pathchunks[0]
+                }
+            };
+            return structure;
+        },
+        
+        // Dotsub.com Video Structure
+        dotsub: function (URL) {
+            var structure = {
+                data: {
+                   embedURL: '//dotsub.com/media/' + URL.pathchunks[1] + '/embed/'
                 }
             };
             return structure;
