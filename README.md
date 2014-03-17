@@ -18,6 +18,14 @@ This will fill `#youtube` with the following markup.
 
     '<embed width="420" height="345" src="http://www.youtube.com/v/x-8QAFqAAJ8" type="application/x-shockwave-flash">'
     
+Contributing
+------------
+If you're looking to add a service to Olly.js, please include the following changes in your pull:
+
+* The modified sources for Olly.js which integrate the service.
+* An example added to markup/examples.html.
+* A change to the README listing the new service under Supported Services.
+    
 Supported Services
 ------------------
 
@@ -26,6 +34,7 @@ Supported Services
 * Youtube
 * Vimeo
 * Twitch.TV
+* Dotsub
 
 **Audio**
 
