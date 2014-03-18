@@ -1,0 +1,25 @@
+{
+  "name": "Olly.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/abeisgreat/Olly.js",
+  "authors": [
+    "Abraham Haskins <abeisgreat@abeisgreat.com>"
+  ],
+  "description": "Translate URLs into Rich Media",
+  "main": "dist/olly.min.js",
+  "keywords": [
+    "olly",
+    "url",
+    "embed",
+    "rich",
+    "media"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
