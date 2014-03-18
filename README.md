@@ -26,7 +26,7 @@ The second method is `olly.richify` which takes a blob of text and searches it f
 
     olly.richify("Check out this sweet video<br />https://www.youtube.com/watch?v=x-8QAFqAAJ8<br />Cool, right?", document.getElementById("blog-post"));
     
-These methods can both take an optional `services` argument which allows you to specify which service's URLs should be embedded. For example, if we only want Youtube videos to be embedded, we can do this:
+These methods can both take an optional `services` argument which allows you to specify which types of URLs should be embedded. For example, if we only want Youtube videos to be embedded, we can do this:
 
     olly.richify("Check out this sweet video<br />https://www.youtube.com/watch?v=x-8QAFqAAJ8<br />How about a vimeo link?<br />http://vimeo.com/78276911<br />", document.getElementById("blog-post"), {youtube: olly.EMBED});
 
