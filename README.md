@@ -14,7 +14,7 @@ Instal with bower or download dist/olly.js
 
     bower install Olly.js
 
-After being included with a `<script>` tag, Olly exposes the `olly` object (weird, right?). This object has two important methods `olly.embed`. This method takes, at a minimum, a URL from a supported service and a DOM element. The method then fills the provided element with the rich media from the provided URL. For example, a link to a Youtube video will fill the provided element with an embedded Youtube player for the video:
+After being included with a `<script>` tag, Olly exposes the `olly` object (weird, right?). This object has two important methods `olly.embed` and `olly.richify`. The `.embed` method takes, at a minimum, a URL from a supported service and a DOM element. The method then fills the provided element with the rich media from the provided URL. For example, a link to a Youtube video will fill the provided element with an embedded Youtube player for the video:
 
     olly.embed("https://www.youtube.com/watch?v=x-8QAFqAAJ8", document.getElementById("youtube"));
     
