@@ -3,7 +3,7 @@
     "use strict";
 
     olly.templates = {
-        youtube: '<embed width="420" height="345" src="{{embedURL}}" type="application/x-shockwave-flash"></embed>',
+        youtube: '<iframe width="560" height="315" src="{{embedURL}}" frameborder="0" allowfullscreen></iframe>',
         
         vimeo: '<iframe src="{{embedURL}}" width="420" height="345" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
         

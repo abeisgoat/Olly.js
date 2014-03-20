@@ -7,7 +7,7 @@
         youtube: function (URL) {
             var structure = {
                 data: {
-                    embedURL: 'http://www.youtube.com/v/' + URL.query.v
+                    embedURL: 'http://www.youtube.com/embed/' + URL.query.v
                 }
             };
             return structure;
