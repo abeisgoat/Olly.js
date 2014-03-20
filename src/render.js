@@ -15,7 +15,7 @@
         definition = (this.domains[domainName] || this.extensions[extensionName])(URL);
         templateObj = this.templates[definition.template || domainName || extensionName];
         
-        if (templateObj.scripts) {
+        if (templateObj && templateObj.scripts) {
             for (scriptIndex = 0; scriptIndex < templateObj.scripts.length; scriptIndex += 1) {
                 src = templateObj.scripts[scriptIndex];
                 this.loadScript(element, olly.generate(src, definition.data));

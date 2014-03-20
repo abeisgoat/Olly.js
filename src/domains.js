@@ -13,6 +13,17 @@
             return structure;
         },
         
+        // Youtu.be Video Structure
+        youtu: function (URL) {
+            var structure = {
+                template: 'youtube',
+                data: {
+                    embedURL: 'http://www.youtube.com/embed/' + URL.pathname.slice(1, URL.pathname.length)
+                }
+            };
+            return structure;
+        },
+        
         // Vimeo.com Video Structure
         vimeo: function (URL) {
             var structure = {
