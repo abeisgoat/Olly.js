@@ -47,6 +47,10 @@ Supported Services
 * Vimeo
 * Twitch.TV
 * Dotsub
+* Dailymotion
+* LiveLeak
+* Vine
+* TED
 
 **Audio**
 

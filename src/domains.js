@@ -32,6 +32,46 @@
             };
             return structure;
         },
+
+        // Dailymotion.com Video Structure
+        dailymotion: function (URL) {
+            var structure = {
+                data: {
+                   embedURL: 'http://www.dailymotion.com/embed/video/' + URL.pathchunks[1]
+                }
+            };
+            return structure;
+        },
+
+        // Liveleak.com Video Structure
+        liveleak: function (URL) {
+            var structure = {
+                data: {
+                   embedURL: 'http://www.liveleak.com/e/' + URL.query.i
+                }
+            };
+            return structure;
+        },
+
+        // Vine.com Video Structure
+        vine: function (URL) {
+            var structure = {
+                data: {
+                   embedURL: 'https://vine.co/v/' + URL.pathchunks[1] + '/embed/simple'
+                }
+            };
+            return structure;
+        },
+
+        // Ted.com Video Structure
+        ted: function (URL) {
+            var structure = {
+                data: {
+                   embedURL: 'http://embed.ted.com/talks/' + URL.pathchunks[1] + '.html'
+                }
+            };
+            return structure;
+        },
         
         // Imgur Image Structure
         imgur: function (URL) {
