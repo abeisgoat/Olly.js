@@ -8,7 +8,15 @@
         vimeo: '<iframe src="{{embedURL}}" width="420" height="345" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
         
         dotsub: '<iframe src="{{embedURL}}" frameborder="0" width="420" height="345"></iframe> ',
+
+        dailymotion: '<iframe frameborder="0" width="420" height="345" src="{{embedURL}}" allowfullscreen></iframe>',
+
+        liveleak: '<embed width="420" height="345" src="{{embedURL}}" type="application/x-shockwave-flash" wmode="transparent"></embed>',
+
+        vine: '<iframe class="vine-embed" src="{{embedURL}}" width="420" height="345" frameborder="0"></iframe><script async src="//platform.vine.co/static/scripts/embed.js" charset="utf-8"></script>',
         
+        ted: '<iframe src="{{embedURL}}" width="420" height="345" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
+
         imgur: '<img src="{{embedURL}}" />',
         
         jsfiddle: '<iframe style="width: 100%; height: 300px" src="{{embedURL}}"></iframe>',
@@ -49,6 +57,10 @@
         
         video: {
             markup: '<video src="{{embedURL}}" controls="true" autoplay loop></video>'   
+        },
+
+        audio: {
+            markup: '<audio src="{{embedURL}}" controls="true"></audio>'   
         },
         
         image: {

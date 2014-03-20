@@ -125,7 +125,15 @@
         vimeo: '<iframe src="{{embedURL}}" width="420" height="345" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
         
         dotsub: '<iframe src="{{embedURL}}" frameborder="0" width="420" height="345"></iframe> ',
+
+        dailymotion: '<iframe frameborder="0" width="420" height="345" src="{{embedURL}}" allowfullscreen></iframe>',
+
+        liveleak: '<embed width="420" height="345" src="{{embedURL}}" type="application/x-shockwave-flash" wmode="transparent"></embed>',
+
+        vine: '<iframe class="vine-embed" src="{{embedURL}}" width="420" height="345" frameborder="0"></iframe><script async src="//platform.vine.co/static/scripts/embed.js" charset="utf-8"></script>',
         
+        ted: '<iframe src="{{embedURL}}" width="420" height="345" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
+
         imgur: '<img src="{{embedURL}}" />',
         
         jsfiddle: '<iframe style="width: 100%; height: 300px" src="{{embedURL}}"></iframe>',
@@ -167,6 +175,10 @@
         video: {
             markup: '<video src="{{embedURL}}" controls="true" autoplay loop></video>'   
         },
+
+        audio: {
+            markup: '<audio src="{{embedURL}}" controls="true"></audio>'   
+        },
         
         image: {
             markup: '<img src="{{embedURL}}" />'   
@@ -204,6 +216,46 @@
             var structure = {
                 data: {
                    embedURL: '//dotsub.com/media/' + URL.pathchunks[1] + '/embed/'
+                }
+            };
+            return structure;
+        },
+
+        // Dailymotion.com Video Structure
+        dailymotion: function (URL) {
+            var structure = {
+                data: {
+                   embedURL: 'http://www.dailymotion.com/embed/video/' + URL.pathchunks[1]
+                }
+            };
+            return structure;
+        },
+
+        // Liveleak.com Video Structure
+        liveleak: function (URL) {
+            var structure = {
+                data: {
+                   embedURL: 'http://www.liveleak.com/e/' + URL.query.i
+                }
+            };
+            return structure;
+        },
+
+        // Vine.com Video Structure
+        vine: function (URL) {
+            var structure = {
+                data: {
+                   embedURL: 'https://vine.co/v/' + URL.pathchunks[1] + '/embed/simple'
+                }
+            };
+            return structure;
+        },
+
+        // Ted.com Video Structure
+        ted: function (URL) {
+            var structure = {
+                data: {
+                   embedURL: 'http://embed.ted.com/talks/' + URL.pathchunks[1] + '.html'
                 }
             };
             return structure;
