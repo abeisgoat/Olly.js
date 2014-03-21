@@ -1,0 +1,44 @@
+body {
+    background-color: #333;
+    color: white;
+    font-family: 'Open Sans';
+    margin: 0px;
+}
+
+h1 {
+    padding: 10px;   
+    text-align: center;
+}
+
+.service {
+    background-color: #202020;
+    width: 740px;   
+    padding-bottom: 30px;
+    margin: 0 auto;
+    border-radius: 0px 0px 3px 3px;
+}
+
+h2 {
+    background-color: #565656;
+    padding: 6px 10px;
+}
+
+h3 {
+    margin: 10px;
+}
+
+.string {
+    background-color: #777777;
+    padding: 10px;
+    font-family: 'Cutive Mono';
+    margin: 10px;
+    font-size: 14px;
+    word-wrap:break-word;
+}
+
+.output {
+    background-color: #777777;
+    padding: 10px;
+    margin: 10px;
+    font-size: 14px;
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Olly Example</title>
+        <title>Olly.js Examples</title>
         <script src="../src/olly.js"></script>
         <script src="../src/parser.js"></script>
         <script src="../src/templates.js"></script>
@@ -9,167 +9,241 @@
         <script src="../src/extensions.js"></script>
         <script src="../src/render.js"></script>
         <script src="../src/promise.js"></script>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link href='http://fonts.googleapis.com/css?family=Cutive+Mono|Open+Sans' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <h1>Olly Examples</h1>
+        <h1>Olly.js Examples</h1>
         
-        <h2>Text Blob</h2>
-        <h3>Original String</h3>
-        "Hi, welcome to my site, please watch <a href='https://www.youtube.com/watch?v=x-8QAFqAAJ8'>this awesome video</a>:<br /> 
-        https://www.youtube.com/watch?v=x-8QAFqAAJ8<br />
-        Thanks! All the best, Abe"
-        <h3>Output</h3>
-        <div id="blob"></div>
-        <script>olly.richify("Hi, welcome to my site, please watch <a href='https://www.youtube.com/watch?v=x-8QAFqAAJ8'>this awesome video</a>:<br />https://www.youtube.com/watch?v=x-8QAFqAAJ8<br />Thanks! All the best, Abe", document.getElementById("blob"), {youtube: olly.EMBED});</script>
-        
-        <h2>Youtube</h2>
-        <h3>Original String</h3>
-        "http://youtu.be/FavUpD_IjVY8"
-        <h3>Output</h3>
-        <div id="youtube1"></div>
-        <script>olly.embed("http://youtu.be/FavUpD_IjVY", document.getElementById("youtube1"));</script>
-        
-        <h3>Original String</h3>
-        "https://www.youtube.com/watch?v=x-8QAFqAAJ8"
-        <h3>Output</h3>
-        <div id="youtube2"></div>
-        <script>olly.embed("https://www.youtube.com/watch?v=x-8QAFqAAJ8", document.getElementById("youtube2"));</script>
-        
-        <h2>Vimeo</h2>
-        <h3>Original String</h3>
-        "http://vimeo.com/78276911"
-        <h3>Output</h3>
-        <div id="vimeo"></div>
-        <script>olly.embed("http://vimeo.com/78276911", document.getElementById("vimeo"));</script>
-        
-        <h2>Dotsub</h2>
-        <h3>Original String</h3>
-        "http://dotsub.com/view/665bd0d5-a9f4-4a07-9d9e-b31ba926ca78"
-        <h3>Output</h3>
-        <div id="dotsub"></div>
-        <script>olly.embed("http://dotsub.com/view/665bd0d5-a9f4-4a07-9d9e-b31ba926ca78", document.getElementById("dotsub"));</script> 
+        <div class="service">
+            <h2>Text Blob</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "Hi, welcome to my site, please watch &lt;a href='https://www.youtube.com/watch?v=x-8QAFqAAJ8'&gt;this awesome video&lt;/a&gt;:<br /> 
+                https://www.youtube.com/watch?v=x-8QAFqAAJ8<br />
+                Thanks! All the best, Abe"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="blob"></div>
+            <script>olly.richify("Hi, welcome to my site, please watch <a href='https://www.youtube.com/watch?v=x-8QAFqAAJ8'>this awesome video</a>:<br />https://www.youtube.com/watch?v=x-8QAFqAAJ8<br />Thanks! All the best, Abe", document.getElementById("blob"), {youtube: olly.EMBED});</script>
+        </div>
+       
+        <div class="service">
+            <h2>Youtube</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "http://youtu.be/FavUpD_IjVY8"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="youtube1"></div>
+            <script>olly.embed("http://youtu.be/FavUpD_IjVY", document.getElementById("youtube1"));</script>
+            <br />
+            <h3>Original String</h3>
+            <div class="string">
+                "https://www.youtube.com/watch?v=x-8QAFqAAJ8"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="youtube2"></div>
+            <script>olly.embed("https://www.youtube.com/watch?v=x-8QAFqAAJ8", document.getElementById("youtube2"));</script>
+        </div>
+       
+        <div class="service">
+            <h2>Vimeo</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "http://vimeo.com/78276911"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="vimeo"></div>
+            <script>olly.embed("http://vimeo.com/78276911", document.getElementById("vimeo"));</script>
+        </div>
 
-        <h2>Dailymotion</h2>
-        <h3>Original String</h3>
-        "http://www.dailymotion.com/video/x1icguf_the-amazing-spider-man-2-final-trailer-official_shortfilms"
-        <h3>Output</h3>
-        <div id="dailymotion"></div>
-        <script>olly.embed("http://www.dailymotion.com/video/x1icguf_the-amazing-spider-man-2-final-trailer-official_shortfilms", document.getElementById("dailymotion"));</script> 
+        <div class="service">
+            <h2>Dotsub</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "http://dotsub.com/view/665bd0d5-a9f4-4a07-9d9e-b31ba926ca78"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="dotsub"></div>
+            <script>olly.embed("http://dotsub.com/view/665bd0d5-a9f4-4a07-9d9e-b31ba926ca78", document.getElementById("dotsub"));</script> 
+        </div>
 
-        <h2>LiveLeak</h2>
-        <h3>Original String</h3>
-        "http://www.liveleak.com/view?i=bb5_1394936283"
-        <h3>Output</h3>
-        <div id="liveleak"></div>
-        <script>olly.embed("http://www.liveleak.com/view?i=bb5_1394936283", document.getElementById("liveleak"));</script> 
+        <div class="service">
+            <h2>Dailymotion</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "http://www.dailymotion.com/video/x1icguf_the-amazing-spider-man-2-final-trailer-official_shortfilms"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="dailymotion"></div>
+            <script>olly.embed("http://www.dailymotion.com/video/x1icguf_the-amazing-spider-man-2-final-trailer-official_shortfilms", document.getElementById("dailymotion"));</script> 
+        </div>
 
-        <h2>Vine</h2>
-        <h3>Original String</h3>
-        "https://vine.co/v/hin6LMXQE3v"
-        <h3>Output</h3>
-        <div id="vine"></div>
-        <script>olly.embed("https://vine.co/v/hin6LMXQE3v", document.getElementById("vine"));</script> 
+        <div class="service">
+            <h2>LiveLeak</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "http://www.liveleak.com/view?i=bb5_1394936283"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="liveleak"></div>
+            <script>olly.embed("http://www.liveleak.com/view?i=bb5_1394936283", document.getElementById("liveleak"));</script> 
+        </div>
 
-        <h2>TED</h2>
-        <h3>Original String</h3>
-        "https://www.ted.com/talks/chris_hadfield_what_i_learned_from_going_blind_in_space"
-        <h3>Output</h3>
-        <div id="ted"></div>
-        <script>olly.embed("https://www.ted.com/talks/chris_hadfield_what_i_learned_from_going_blind_in_space", document.getElementById("ted"));</script> 
-        
-        <h2>Github (Repo)</h2>
-        <h3>Original String</h3>
-        "https://github.com/abeisgreat/Olly.js"
-        <h3>Output</h3>
-        <div id="github-repo"></div>
-        <script>olly.embed("https://github.com/abeisgreat/Olly.js", document.getElementById("github-repo"));</script> 
-        
-        <h2>Imgur</h2>
-        <h3>Original String</h3>
-        "http://imgur.com/62K49JD"
-        <h3>Output</h3>
-        <div id="imgur"></div>
-        <script>olly.embed("http://imgur.com/62K49JD", document.getElementById("imgur"));</script>
-        
-        <h2>jsFiddle</h2>
-        <h3>Original String</h3>
-        "http://jsfiddle.net/zalun/NmudS/"
-        <h3>Output</h3>
-        <div id="jsfiddle"></div>
-        <script>olly.embed("http://jsfiddle.net/zalun/NmudS/", document.getElementById("jsfiddle"));</script>
-        
-        <h2>Twitter (Tweet)</h2>
-        <h3>Original String</h3>
-        "https://twitter.com/TheNateK/status/404049102322671616"
-        <h3>Output</h3>
-        <div id="twitter-tweet"></div>
-        <script>olly.embed("https://twitter.com/TheNateK/status/404049102322671616", document.getElementById("twitter-tweet"));</script> 
-        
-        <h2>Reddit (Subreddit)</h2>
-        <h3>Original String</h3>
-        "http://www.reddit.com/r/aquariums"
-        <h3>Output</h3>
-        <div id="reddit-subreddit"></div>
-        <script>olly.embed("http://www.reddit.com/r/aquariums", document.getElementById("reddit-subreddit"));</script> 
-        
-        <h2>Reddit (User)</h2>
-        <h3>Original String</h3>
-        "http://www.reddit.com/user/mistersavage"
-        <h3>Output</h3>
-        <div id="reddit-user"></div>
-        <script>olly.embed("http://www.reddit.com/user/mistersavage", document.getElementById("reddit-user"));</script> 
-        
-        <h2>Soundcloud (Song)</h2>
-        <h3>Original String</h3>
-        "https://soundcloud.com/kingsdeadmusic/not-a-worry"
-        <h3>Output</h3>
-        <div id="soundcloud-song"></div>
-        <script>olly.embed("https://soundcloud.com/kingsdeadmusic/not-a-worry", document.getElementById("soundcloud-song"));</script> 
-        
-        <h2>Twitch.TV</h2>
-        <h3>Original String</h3>
-        "http://www.twitch.tv/dreamhacksc2"
-        <h3>Output</h3>
-        <div id="twitch"></div>
-        <script>olly.embed("http://www.twitch.tv/dreamhacksc2", document.getElementById("twitch"));</script> 
-   
-        <h2>Gfycat.com</h2>
-        <h3>Original String</h3>
-        "http://gfycat.com/BoringPessimisticBrownbear"
-        <h3>Output</h3>
-        <div id="gfycat"></div>
-        <script>olly.embed("http://gfycat.com/BoringPessimisticBrownbear", document.getElementById("gfycat"));</script> 
-    
-        <h2>Images (.jpg, .png, .bmp, .gif)</h2>
-        <h3>Original String</h3>
-        "http://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Britishblue.jpg/372px-Britishblue.jpg"
-        <h3>Output</h3>
-        <div id="image"></div>
-        <script>olly.embed("http://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Britishblue.jpg/372px-Britishblue.jpg", document.getElementById("image"));</script> 
+        <div class="service">
+            <h2>Vine</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "https://vine.co/v/hin6LMXQE3v"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="vine"></div>
+            <script>olly.embed("https://vine.co/v/hin6LMXQE3v", document.getElementById("vine"));</script> 
+        </div>
 
-        <h2>Audio (.mp3, .ogg)</h2>
-        <h3>Original String</h3>
-        "http://upload.wikimedia.org/wikipedia/en/1/10/Michael_Jackson_Thriller.ogg"
-        <h3>Output</h3>
-        <div id="audio"></div>
-        <script>olly.embed("http://upload.wikimedia.org/wikipedia/en/1/10/Michael_Jackson_Thriller.ogg", document.getElementById("audio"));</script> 
+        <div class="service">
+            <h2>TED</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "https://www.ted.com/talks/chris_hadfield_what_i_learned_from_going_blind_in_space"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="ted"></div>
+            <script>olly.embed("https://www.ted.com/talks/chris_hadfield_what_i_learned_from_going_blind_in_space", document.getElementById("ted"));</script> 
+        </div>
+     
+        <div class="service">
+            <h2>Github (Repo)</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "https://github.com/abeisgreat/Olly.js"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="github-repo"></div>
+            <script>olly.embed("https://github.com/abeisgreat/Olly.js", document.getElementById("github-repo"));</script> 
+        </div>
+            
+        <div class="service">
+            <h2>Imgur</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "http://imgur.com/62K49JD"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="imgur"></div>
+            <script>olly.embed("http://imgur.com/62K49JD", document.getElementById("imgur"));</script>
+        </div>
+     
+        <div class="service">
+            <h2>jsFiddle</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "http://jsfiddle.net/zalun/NmudS/"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="jsfiddle"></div>
+            <script>olly.embed("http://jsfiddle.net/zalun/NmudS/", document.getElementById("jsfiddle"));</script>
+        </div>
+            
+        <div class="service">
+            <h2>Twitter (Tweet)</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "https://twitter.com/TheNateK/status/404049102322671616"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="twitter-tweet"></div>
+            <script>olly.embed("https://twitter.com/TheNateK/status/404049102322671616", document.getElementById("twitter-tweet"));</script> 
+        </div>
+            
+        <div class="service">
+            <h2>Reddit (Subreddit)</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "http://www.reddit.com/r/aquariums"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="reddit-subreddit"></div>
+            <script>olly.embed("http://www.reddit.com/r/aquariums", document.getElementById("reddit-subreddit"));</script> 
+        </div>
+     
+        <div class="service">
+            <h2>Reddit (User)</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "http://www.reddit.com/user/mistersavage"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="reddit-user"></div>
+            <script>olly.embed("http://www.reddit.com/user/mistersavage", document.getElementById("reddit-user"));</script> 
+        </div>
+            
+        <div class="service">
+            <h2>Soundcloud (Song)</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "https://soundcloud.com/kingsdeadmusic/not-a-worry"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="soundcloud-song"></div>
+            <script>olly.embed("https://soundcloud.com/kingsdeadmusic/not-a-worry", document.getElementById("soundcloud-song"));</script> 
+        </div>
 
-        <h2>Videos (.mp4, .webm, .ogv)</h2>
-        <h3>Original String</h3>
-        "http://upload.wikimedia.org/wikipedia/commons/d/d9/Pkmk_-_timelapse_balionai_%28by%29.ogv"
-        <h3>Output</h3>
-        <div id="video"></div>
-        <script>olly.embed("http://upload.wikimedia.org/wikipedia/commons/d/d9/Pkmk_-_timelapse_balionai_%28by%29.ogv", document.getElementById("video"));</script> 
-    
+        <div class="service">     
+            <h2>Twitch.TV</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "http://www.twitch.tv/dreamhacksc2"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="twitch"></div>
+            <script>olly.embed("http://www.twitch.tv/dreamhacksc2", document.getElementById("twitch"));</script> 
+        </div>
+       
+        <div class="service">
+            <h2>Gfycat.com</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "http://gfycat.com/BoringPessimisticBrownbear"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="gfycat"></div>
+            <script>olly.embed("http://gfycat.com/BoringPessimisticBrownbear", document.getElementById("gfycat"));</script>
+        </div>
         
-        
-        <!--
-        <h2>Twitter (Timeline)</h2>
-        <h3>Original String</h3>
-        "https://twitter.com/TheNateK/"
-        <h3>Output</h3>
-        <div id="twitter-timeline"></div>
-        <script>olly.embed("https://twitter.com/TheNateK/", document.getElementById("twitter-timeline"));</script>-->
+        <div class="service">
+            <h2>Images (.jpg, .png, .bmp, .gif)</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "http://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Britishblue.jpg/372px-Britishblue.jpg"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="image"></div>
+            <script>olly.embed("http://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Britishblue.jpg/372px-Britishblue.jpg", document.getElementById("image"));</script> 
+        </div>
+
+        <div class="service">
+            <h2>Audio (.mp3, .ogg)</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "http://upload.wikimedia.org/wikipedia/en/1/10/Michael_Jackson_Thriller.ogg"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="audio"></div>
+            <script>olly.embed("http://upload.wikimedia.org/wikipedia/en/1/10/Michael_Jackson_Thriller.ogg", document.getElementById("audio"));</script> 
+        </div>
+
+        <div class="service">
+            <h2>Videos (.mp4, .webm, .ogv)</h2>
+            <h3>Original String</h3>
+            <div class="string">
+                "http://upload.wikimedia.org/wikipedia/commons/d/d9/Pkmk_-_timelapse_balionai_%28by%29.ogv"
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="video"></div>
+            <script>olly.embed("http://upload.wikimedia.org/wikipedia/commons/d/d9/Pkmk_-_timelapse_balionai_%28by%29.ogv", document.getElementById("video"));</script> 
+        </div>
         
     </body>
 </html>
