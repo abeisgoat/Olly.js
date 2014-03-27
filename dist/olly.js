@@ -1,4 +1,4 @@
-/*global window, document */
+/*global window,module,olly,document */
 (function () {
     "use strict";
     
@@ -63,12 +63,18 @@
             return true;
         };
     };
-    
-    window.olly = new Olly();
+
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = new Olly();
+        var jsdom = require("jsdom");
+        module.document = jsdom.jsdom("<html><body></body></html>", jsdom.level(1, "core"));
+    } else {
+        window.olly = new Olly();
+    }
     
 }());
-/*global window, document */
-(function (olly) {
+/*global window,module,olly,document */
+(function (olly, document) {
     "use strict";
     
     //Inspired from https://gist.github.com/jlong/2428561
@@ -77,11 +83,11 @@
         
         parser = document.createElement('a');
         parser.href = URLString;
-        //parser.href = "http://example.com:3000/pathname/?search=test#hash";
         
         query = {};
         cleanPathchunks = [];
-        
+
+        console.log(parser.href);
         if (parser.search[0] === "?") {
             querystring = parser.search.slice(1, parser.search.length);
             querypairs = querystring.split("&");
@@ -90,6 +96,7 @@
                 query[querypair[0]] = querypair[1];
             }
         }
+        console.log('hello!?');
         
         if (parser.pathname !== "") {
             pathchunks = parser.pathname.split("/");
@@ -99,7 +106,7 @@
                 }
             }
         }
-        
+        console.log('here?');      
         return {
             url: URLString,               // => "http://example.com:3000/pathname/?search=test#hash"
             protocol: parser.protocol,    // => "http:"
@@ -114,13 +121,16 @@
         };
     };
     
-}(window.olly));
+}(
+    typeof module !== 'undefined' && module.exports? module.exports : window.olly,
+    typeof module !== 'undefined'? module.document : document
+));
 /*global window */
 (function (olly) {
     "use strict";
 
     olly.templates = {
-        youtube: '<embed width="420" height="345" src="{{embedURL}}" type="application/x-shockwave-flash"></embed>',
+        youtube: '<iframe width="560" height="315" src="{{embedURL}}" frameborder="0" allowfullscreen></iframe>',
         
         vimeo: '<iframe src="{{embedURL}}" width="420" height="345" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
         
@@ -185,8 +195,8 @@
         }
     };
     
-}(window.olly));
-/*global window */
+}(typeof module !== 'undefined' && module.exports? module.exports : window.olly));
+/*global window,module,olly */
 (function (olly) {
     "use strict";
     
@@ -195,7 +205,18 @@
         youtube: function (URL) {
             var structure = {
                 data: {
-                    embedURL: 'http://www.youtube.com/v/' + URL.query.v
+                    embedURL: 'http://www.youtube.com/embed/' + URL.query.v
+                }
+            };
+            return structure;
+        },
+        
+        // Youtu.be Video Structure
+        youtu: function (URL) {
+            var structure = {
+                template: 'youtube',
+                data: {
+                    embedURL: 'http://www.youtube.com/embed/' + URL.pathname.slice(1, URL.pathname.length)
                 }
             };
             return structure;
@@ -362,8 +383,8 @@
         }
     };
     
-}(window.olly));
-/*global window */
+}(typeof module !== 'undefined' && module.exports? module.exports : window.olly));
+/*global window,module,olly */
 (function (olly) {
     "use strict";
     
@@ -412,8 +433,8 @@
     olly.extensions.ogg = olly.extensions.audio;
     olly.extensions.mp3 = olly.extensions.audio;
     
-}(window.olly));
-/*global window */
+}(typeof module !== 'undefined' && module.exports? module.exports : window.olly));
+/*global window,module,olly,document */
 (function (olly, document) {
     "use strict";
     
@@ -430,7 +451,7 @@
         definition = (this.domains[domainName] || this.extensions[extensionName])(URL);
         templateObj = this.templates[definition.template || domainName || extensionName];
         
-        if (templateObj.scripts) {
+        if (templateObj && templateObj.scripts) {
             for (scriptIndex = 0; scriptIndex < templateObj.scripts.length; scriptIndex += 1) {
                 src = templateObj.scripts[scriptIndex];
                 this.loadScript(element, olly.generate(src, definition.data));
@@ -513,8 +534,11 @@
         }
         return output;
     };
-}(window.olly, window.document));
-/*global window, document */
+}(
+    typeof module !== 'undefined' && module.exports? module.exports : window.olly,
+    typeof module !== 'undefined'? module.document : document
+));
+/*global window,module,olly */
 (function (olly) {
     "use strict";
     
@@ -546,4 +570,4 @@
         return local;
     };
     
-}(window.olly));
+}(typeof module !== 'undefined' && module.exports? module.exports : window.olly));

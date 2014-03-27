@@ -1,5 +1,5 @@
-/*global window, document */
-(function (olly) {
+/*global window,module,olly,document */
+(function (olly, document) {
     "use strict";
     
     //Inspired from https://gist.github.com/jlong/2428561
@@ -8,11 +8,11 @@
         
         parser = document.createElement('a');
         parser.href = URLString;
-        //parser.href = "http://example.com:3000/pathname/?search=test#hash";
         
         query = {};
         cleanPathchunks = [];
-        
+
+        console.log(parser.href);
         if (parser.search[0] === "?") {
             querystring = parser.search.slice(1, parser.search.length);
             querypairs = querystring.split("&");
@@ -21,6 +21,7 @@
                 query[querypair[0]] = querypair[1];
             }
         }
+        console.log('hello!?');
         
         if (parser.pathname !== "") {
             pathchunks = parser.pathname.split("/");
@@ -30,7 +31,7 @@
                 }
             }
         }
-        
+        console.log('here?');      
         return {
             url: URLString,               // => "http://example.com:3000/pathname/?search=test#hash"
             protocol: parser.protocol,    // => "http:"
@@ -45,4 +46,7 @@
         };
     };
     
-}(window.olly));
+}(
+    typeof module !== 'undefined' && module.exports? module.exports : window.olly,
+    typeof module !== 'undefined'? module.document : document
+));

@@ -1,4 +1,4 @@
-/*global window, document */
+/*global window,module,olly,document */
 (function () {
     "use strict";
     
@@ -63,7 +63,13 @@
             return true;
         };
     };
-    
-    window.olly = new Olly();
+
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = new Olly();
+        var jsdom = require("jsdom");
+        module.document = jsdom.jsdom("<html><body></body></html>", jsdom.level(1, "core"));
+    } else {
+        window.olly = new Olly();
+    }
     
 }());
