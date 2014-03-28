@@ -36,7 +36,7 @@
       "android-browser/latest"
     ]
   },
-  "dependencies": {
-    
+  "optionalDependencies": {
+    "jsdom": "~0.10.3"
   }
 }
