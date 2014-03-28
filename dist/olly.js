@@ -3,12 +3,23 @@
     "use strict";
     
     var Olly = function () {
-        this.murs = true;
-        this.TEXT = 0;
-        this.LINK = 1;
-        this.EMBED = 2;
+        var self = this;
         
-        this.embed = function (URLString, element, services) {
+        self.murs = true;
+        self.TEXT = 0;
+        self.LINK = 1;
+        self.EMBED = 2;
+        self.onReady = null;
+        
+        self.ready = function (callback) {
+            if (callback) {
+                self.onReady = callback;
+            }else if (typeof self.onReady === 'function') {
+                self.onReady();
+            }
+        };
+        
+        self.embed = function (URLString, element, services) {
             var URL;
             
             URL = this.parseURL(URLString);
@@ -17,7 +28,7 @@
             return true;
         };
         
-        this.richify = function (blob, parentElement, services) {
+        self.richify = function (blob, parentElement, services) {
             var elements, otbIndex, OTB;
             
             var URLRegex = /(http(?:s?):[^ <\n]+)/;
@@ -65,38 +76,54 @@
     };
 
     if (typeof module !== 'undefined' && module.exports) {
-        module.exports = new Olly();
+        // We use a fake DOM here so we can still parse/render correctly
         var jsdom = require("jsdom");
-        module.document = jsdom.jsdom("<html><body></body></html>", jsdom.level(1, "core"));
+        module.exports = new Olly();
+        jsdom.env("<html><body></body></html>", function (errors, window) {
+            module.document = window.document;
+            module.exports.ready();
+        });
     } else {
         window.olly = new Olly();
+        window.olly.ready();
     }
     
 }());
 /*global window,module,olly,document */
-(function (olly, document) {
+(function (olly) {
     "use strict";
     
     //Inspired from https://gist.github.com/jlong/2428561
     olly.parseURL = function (URLString) {
-        var cleanPathchunks, parser, pathchunks, pathchunkIndex, query, queryIndex, querypairs, querypair, querystring;
+        var document = typeof module !== 'undefined'? module.document : document;
+        
+        var cleanPathchunks, parser, pathchunks, pathchunkIndex, query, queryIndex, queryPairs, queryPair, queryString, search;
         
         parser = document.createElement('a');
         parser.href = URLString;
         
         query = {};
         cleanPathchunks = [];
-
-        console.log(parser.href);
-        if (parser.search[0] === "?") {
-            querystring = parser.search.slice(1, parser.search.length);
-            querypairs = querystring.split("&");
-            for (queryIndex = 0; queryIndex < querypairs.length; queryIndex += 1) {
-                querypair = querypairs[queryIndex].split("=");
-                query[querypair[0]] = querypair[1];
+        
+        if (parser.search) {
+            search = parser.search;
+        } else {
+            var splitURL = URLString.replace(/#.+/, "").split('?');
+            if (splitURL.length == 2) {
+                search = "?" + splitURL[1];
+            }else{
+                search = "";
             }
         }
-        console.log('hello!?');
+ 
+        if (search && search[0] === "?") {
+            queryString = search.slice(1, search.length);
+            queryPairs = queryString.split("&");
+            for (queryIndex = 0; queryIndex < queryPairs.length; queryIndex += 1) {
+                queryPair = queryPairs[queryIndex].split("=");
+                query[queryPair[0]] = queryPair[1];
+            }
+        }
         
         if (parser.pathname !== "") {
             pathchunks = parser.pathname.split("/");
@@ -106,7 +133,7 @@
                 }
             }
         }
-        console.log('here?');      
+   
         return {
             url: URLString,               // => "http://example.com:3000/pathname/?search=test#hash"
             protocol: parser.protocol,    // => "http:"
@@ -114,7 +141,7 @@
             port: parser.port,            // => "3000"
             pathname: parser.pathname,    // => "/pathname/"
             pathchunks: cleanPathchunks,  // => ["pathname"]
-            querystring: parser.search,   // => "?search=test"
+            querystring: queryString,     // => "search=test"
             query: query,                 // => {search: "test"}
             hash: parser.hash,            // => "#hash"
             host: parser.host             // => "example.com:3000"
@@ -122,8 +149,7 @@
     };
     
 }(
-    typeof module !== 'undefined' && module.exports? module.exports : window.olly,
-    typeof module !== 'undefined'? module.document : document
+    typeof module !== 'undefined' && module.exports? module.exports : window.olly
 ));
 /*global window */
 (function (olly) {
