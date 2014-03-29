@@ -1,4 +1,4 @@
-/*global window */
+/*global window,module,olly,document */
 (function (olly, document) {
     "use strict";
     
@@ -98,4 +98,7 @@
         }
         return output;
     };
-}(window.olly, window.document));
+}(
+    typeof module !== 'undefined' && module.exports? module.exports : window.olly,
+    typeof module !== 'undefined'? module.document : document
+));

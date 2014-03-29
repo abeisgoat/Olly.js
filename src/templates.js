@@ -68,4 +68,4 @@
         }
     };
     
-}(window.olly));
+}(typeof module !== 'undefined' && module.exports? module.exports : window.olly));

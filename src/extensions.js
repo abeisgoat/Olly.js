@@ -1,4 +1,4 @@
-/*global window */
+/*global window,module,olly */
 (function (olly) {
     "use strict";
     
@@ -47,4 +47,4 @@
     olly.extensions.ogg = olly.extensions.audio;
     olly.extensions.mp3 = olly.extensions.audio;
     
-}(window.olly));
+}(typeof module !== 'undefined' && module.exports? module.exports : window.olly));

@@ -1,14 +1,25 @@
-/*global window, document */
+/*global window,module,olly,document */
 (function () {
     "use strict";
     
     var Olly = function () {
-        this.murs = true;
-        this.TEXT = 0;
-        this.LINK = 1;
-        this.EMBED = 2;
+        var self = this;
         
-        this.embed = function (URLString, element, services) {
+        self.murs = true;
+        self.TEXT = 0;
+        self.LINK = 1;
+        self.EMBED = 2;
+        self.onReady = null;
+        
+        self.ready = function (callback) {
+            if (callback) {
+                self.onReady = callback;
+            }else if (typeof self.onReady === 'function') {
+                self.onReady();
+            }
+        };
+        
+        self.embed = function (URLString, element, services) {
             var URL;
             
             URL = this.parseURL(URLString);
@@ -17,7 +28,7 @@
             return true;
         };
         
-        this.richify = function (blob, parentElement, services) {
+        self.richify = function (blob, parentElement, services) {
             var elements, otbIndex, OTB;
             
             var URLRegex = /(http(?:s?):[^ <\n]+)/;
@@ -63,7 +74,18 @@
             return true;
         };
     };
-    
-    window.olly = new Olly();
+
+    if (typeof module !== 'undefined' && module.exports) {
+        // We use a fake DOM here so we can still parse/render correctly
+        var jsdom = require("jsdom");
+        module.exports = new Olly();
+        jsdom.env("<html><body></body></html>", function (errors, window) {
+            module.document = window.document;
+            module.exports.ready();
+        });
+    } else {
+        window.olly = new Olly();
+        window.olly.ready();
+    }
     
 }());

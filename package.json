@@ -4,7 +4,7 @@
   "description": "A JavaScript library to convert URLs into embedable HTML.",
   "main": "src/olly.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape tests/*.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,24 @@
   },
   "homepage": "https://github.com/abeisgreat/olly",
   "devDependencies": {
+    "tape": "~2.12.0",
+    "through": "~2.3.4"
+  },
+  "testling": {
+    "files": "test/*.js",
+    "browsers": [
+      "ie/6..latest",
+      "chrome/22..latest",
+      "firefox/16..latest",
+      "safari/latest",
+      "opera/11.0..latest",
+      "iphone/6",
+      "ipad/6",
+      "android-browser/latest"
+    ]
+  },
+  "optionalDependencies": {
+    "jsdom": "~0.10.3",
     "grunt": "~0.4.2",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-jshint": "~0.7.2",

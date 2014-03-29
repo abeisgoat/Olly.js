@@ -1,4 +1,4 @@
-/*global window, document */
+/*global window,module,olly */
 (function (olly) {
     "use strict";
     
@@ -30,4 +30,4 @@
         return local;
     };
     
-}(window.olly));
+}(typeof module !== 'undefined' && module.exports? module.exports : window.olly));
