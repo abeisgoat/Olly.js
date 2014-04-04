@@ -86,7 +86,6 @@
         if (typeof templateObj === "string") {
             templateObj = {markup: templateObj};
         }
-        console.log( olly.generate(templateObj.markup, data) );
         element.innerHTML = olly.generate(templateObj.markup, data);
     };
 

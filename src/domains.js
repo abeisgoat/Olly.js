@@ -168,7 +168,6 @@
 
         // Spotify Structure
         spotify: function (URL) {
-            console.log( URL.pathchunks[1] );
             return {
                 data: {
                     embedID: URL.pathchunks[1]
