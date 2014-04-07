@@ -1,7 +1,7 @@
 /*global window,module,olly */
 (function (olly) {
     "use strict";
-    
+
     olly.domains = {
         // Youtube.com Video Structure
         youtube: function (URL) {
@@ -12,7 +12,7 @@
             };
             return structure;
         },
-        
+
         // Youtu.be Video Structure
         youtu: function (URL) {
             var structure = {
@@ -23,7 +23,7 @@
             };
             return structure;
         },
-        
+
         // Vimeo.com Video Structure
         vimeo: function (URL) {
             var structure = {
@@ -33,7 +33,7 @@
             };
             return structure;
         },
-        
+
         // Dotsub.com Video Structure
         dotsub: function (URL) {
             var structure = {
@@ -83,7 +83,7 @@
             };
             return structure;
         },
-        
+
         // Imgur Image Structure
         imgur: function (URL) {
             var structure = {
@@ -93,7 +93,7 @@
             };
             return structure;
         },
-        
+
         // jsFiddle IDE/Editor Structure
         jsfiddle: function (URL) {
             var structure = {
@@ -103,7 +103,7 @@
             };
             return structure;
         },
-        
+
         // Twitter Structure
         twitter: function (URL) {
             var template, structure;
@@ -116,7 +116,7 @@
             };
             return structure;
         },
-        
+
         // Github Repo Structure
         github: function (URL) {
             var structure = {
@@ -126,22 +126,22 @@
             };
             return structure;
         },
-        
+
         // Reddit Repo Structure
         reddit: function (URL) {
             var deferred, structure, callbackName, template, JSONPURL;
-            
+
             callbackName = '_reddit_' + URL.pathchunks[1];
             template = URL.pathchunks.indexOf("user") != -1 ? "reddit_user" : "reddit_subreddit";
-            
+
             if (template == "reddit_subreddit") {
                 JSONPURL = 'http://www.reddit.com/r/' + URL.pathchunks[1] + '/hot/.embed';
             }
-            
+
             if (template == "reddit_user") {
                 JSONPURL = 'http://www.reddit.com/user/' + URL.pathchunks[1] + '/submitted.embed';
             }
-            
+
             deferred = olly.defer();
             window[callbackName] = function (markup) {
                 deferred.resolve({markup: markup});
@@ -156,7 +156,7 @@
             };
             return structure;
         },
-        
+
         // Soundcloud Structure
         soundcloud: function (URL) {
             return {
@@ -165,7 +165,17 @@
                 }
             };
         },
-        
+
+        // Spotify Structure
+        spotify: function (URL) {
+            return {
+                data: {
+                    embedID: URL.pathchunks[1]
+                }
+            };
+        },
+
+
         // Twitch Structure
         twitch: function (URL) {
             return {
@@ -174,7 +184,7 @@
                 }
             };
         },
-        
+
         // Gfycat Structure
         gfycat: function (URL) {
             return {
@@ -184,5 +194,5 @@
             };
         }
     };
-    
+
 }(typeof module !== 'undefined' && module.exports? module.exports : window.olly));

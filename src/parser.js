@@ -1,19 +1,19 @@
 /*global window,module,olly,document */
 (function (olly) {
     "use strict";
-    
+
     //Inspired from https://gist.github.com/jlong/2428561
     olly.parseURL = function (URLString) {
         var document = typeof module !== 'undefined'? module.document : window.document;
-        
+
         var cleanPathchunks, parser, pathchunks, pathchunkIndex, query, queryIndex, queryPairs, queryPair, queryString, search;
-        
+
         parser = document.createElement('a');
         parser.href = URLString;
-        
+
         query = {};
         cleanPathchunks = [];
-        
+
         if (parser.search) {
             search = parser.search;
         } else {
@@ -24,7 +24,7 @@
                 search = "";
             }
         }
- 
+
         if (search && search[0] === "?") {
             queryString = search.slice(1, search.length);
             queryPairs = queryString.split("&");
@@ -33,7 +33,7 @@
                 query[queryPair[0]] = queryPair[1];
             }
         }
-        
+
         if (parser.pathname !== "") {
             pathchunks = parser.pathname.split("/");
             for (pathchunkIndex = 0; pathchunkIndex < pathchunks.length; pathchunkIndex += 1) {
@@ -42,7 +42,7 @@
                 }
             }
         }
-   
+
         return {
             url: URLString,               // => "http://example.com:3000/pathname/?search=test#hash"
             protocol: parser.protocol,    // => "http:"
@@ -56,7 +56,7 @@
             host: parser.host             // => "example.com:3000"
         };
     };
-    
+
 }(
     typeof module !== 'undefined' && module.exports? module.exports : window.olly
 ));
