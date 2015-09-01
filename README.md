@@ -16,15 +16,21 @@ Instal with bower or download dist/olly.js
 
 After being included with a `<script>` tag, Olly exposes the `olly` object (weird, right?). This object has one important method `olly.embed` The `.embed` method takes, at a minimum, a URL from a supported service and a DOM element. The method then fills the provided element with the rich media from the provided URL. For example, a link to a Youtube video will fill the provided element with an embedded Youtube player for the video:
 
-    olly.embed("https://www.youtube.com/watch?v=x-8QAFqAAJ8", document.getElementById("youtube"));
+```js
+olly.embed("https://www.youtube.com/watch?v=x-8QAFqAAJ8", document.getElementById("youtube"));
+```
 
 This will fill `#youtube` with the following markup.
 
-    '<embed width="420" height="345" src="http://www.youtube.com/v/x-8QAFqAAJ8" type="application/x-shockwave-flash">'
+```html
+<embed width="420" height="345" src="http://www.youtube.com/v/x-8QAFqAAJ8" type="application/x-shockwave-flash">
+```
 
 These methods can both take an optional `services` argument which allows you to specify which types of URLs should be embedded. For example, if we only want Youtube videos to be embedded, we can do this:
 
-    olly.embed("https://www.youtube.com/watch?v=x-8QAFqAAJ8", document.getElementById("blog-post"), {youtube: olly.EMBED});
+```js
+olly.embed("https://www.youtube.com/watch?v=x-8QAFqAAJ8", document.getElementById("blog-post"), {youtube: olly.EMBED});
+```
 
 Contributing
 ------------
