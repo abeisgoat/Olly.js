@@ -33,19 +33,19 @@
 
             var URLRegex = /(http(?:s?):[^ <\n]+)/;
             var TagRegex = /<.+?>/g;
-            var OutsideTagRegex = />(.+?)</g;
+            var OutsideTagRegex = />(.+?)(<|$)/g;
 
             // Remove all tags from blob so we don't end up
             // trying to put an embeded player in an <a> tag
             var text = blob.replace(TagRegex, ' ');
 
             // Then pull out all the URLS
-            var URLs = text.match(URLRegex);
+            var URLs = text.match(URLRegex) || [];
 
             // We use OutsideTagBlobs to provide context to the
             // URL replaces, so we don't accidently replace URLs
             // in attributes and whatnot
-            var OTBs = blob.match(OutsideTagRegex);
+            var OTBs = blob.match(OutsideTagRegex) || [];
             var nOTBs = [];
 
             for (var urlIndex=0; urlIndex<URLs.length; urlIndex++) {
@@ -55,6 +55,8 @@
                     nOTBs.push(OTB.replace(url, "<span class='olly'>" + url + "</span>"));
                 }
             }
+
+            console.log(OTBs)
 
             for (otbIndex=0; otbIndex<OTBs.length; otbIndex++) {
                 OTB = OTBs[otbIndex];
