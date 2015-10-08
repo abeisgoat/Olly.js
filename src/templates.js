@@ -29,7 +29,7 @@
         twitter_timeline: {
             markup: '<a class="twitter-timeline" href="{{embedURL}}"></a>',
             scripts: ['//platform.twitter.com/widgets.js']
-        },
+        },            
 
         github: {
             markup: '<div class="github-widget" data-repo="{{repo}}"></div>',

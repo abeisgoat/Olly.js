@@ -4,7 +4,7 @@
 
     var Olly = function () {
         var self = this;
-
+           
         self.murs = true;
         self.TEXT = 0;
         self.LINK = 1;

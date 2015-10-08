@@ -175,7 +175,7 @@
             };
         },
 
-
+                
         // Twitch Structure
         twitch: function (URL) {
             return {
