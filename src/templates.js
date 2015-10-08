@@ -57,6 +57,8 @@
             ]
         },
 
+        khanacademy: '<iframe frameborder="0" scrolling="no" width="560" height="355" src="{{embedURL}}" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>',
+
         video: {
             markup: '<video src="{{embedURL}}" controls="true" autoplay loop></video>'
         },

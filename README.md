@@ -53,6 +53,7 @@ Supported Services
 * LiveLeak
 * Vine
 * TED
+* Khan Academy
 
 **Audio**
 

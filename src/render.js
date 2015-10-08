@@ -5,7 +5,7 @@
     olly.render = function (element, URL, services) {
         var src, definition, domainName, extensionName, field, templateObj, scriptIndex;
 
-        domainName = this.findDomain(URL);
+        domainName = this.findDomain(URL);  console.log("domainName:",domainName);
         extensionName = this.findExtension(URL);
 
         if ((!domainName && !extensionName) || (services || {})[domainName] == olly.TEXT) {
