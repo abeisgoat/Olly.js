@@ -4,7 +4,7 @@
 
     var Olly = function () {
         var self = this;
-           
+
         self.murs = true;
         self.TEXT = 0;
         self.LINK = 1;
@@ -19,13 +19,13 @@
             }
         };
 
-        self.embed = function (URLString, element, services) {
-            var URL;
+        self.embed = function (URLString, elementOrReturn, services) {
+            var URL, renderResults;
 
             URL = this.parseURL(URLString);
-            this.render(element, URL, services);
+            renderResults = this.render(elementOrReturn, URL, services);
 
-            return true;
+            return (typeof renderResults === "boolean") ? true : renderResults;
         };
 
         self.richify = function (blob, parentElement, services) {

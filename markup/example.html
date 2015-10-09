@@ -27,6 +27,27 @@
             <div class="output" id="blob"></div>
             <script>olly.richify("Hi, welcome to my site, please watch <a href='https://www.youtube.com/watch?v=x-8QAFqAAJ8'>this awesome video</a>:<br />https://www.youtube.com/watch?v=7VFBQLAjcDU<br />Thanks! All the best, Abe", document.getElementById("blob"), {youtube: olly.EMBED});</script>
         </div>-->
+        <div class="service">
+            <h2></h2>
+            <h3>&nbsp;&nbsp;&nbsp;&nbsp;To use Olly.js without feeding it an element<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;you can replace the element argument with any boolean value:</h3>
+            <div class="string">
+                &lt;script&gt;<br>
+                var embedResults = olly.embed("http://vimeo.com/78276911", <b>true</b>);<br>
+                &lt;/script&gt;
+            </div>
+            <h3>Output</h3>
+            <div class="output" id="vimeoNoElement">
+                &lt;script&gt;<br>
+                var embedResults = <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>scripts</b>: Array[0],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>markdown</b>: '<i>&lt;iframe src="//player.vimeo.com/video/78276911" width="420" height="345" <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;</i>',<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &lt;/script&gt;
+            </div>
+        </div>
 
         <div class="service">
             <h2>Youtube</h2>
@@ -224,7 +245,7 @@
         </div>
 
         <div class="service">
-            <h2>Khan Academy</h2>                  
+            <h2>Khan Academy</h2>
             <h3>Original String</h3>
             <div class="string">
                 "https://www.khanacademy.org/embed_video?v=IFKnq9QM6_A"
