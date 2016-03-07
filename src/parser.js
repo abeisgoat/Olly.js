@@ -1,7 +1,7 @@
 /*global window,module,olly,document */
 (function (olly) {
     "use strict";
-
+        
     //Inspired from https://gist.github.com/jlong/2428561
     olly.parseURL = function (URLString) {
         var document = typeof module !== 'undefined'? module.document : window.document;

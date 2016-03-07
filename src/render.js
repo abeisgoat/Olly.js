@@ -3,13 +3,22 @@
     "use strict";
 
     olly.render = function (element, URL, services) {
-        var src, definition, domainName, extensionName, field, templateObj, scriptIndex;
+        var src, definition, domainName, extensionName, field, templateObj, scriptIndex, shouldRender;
 
         domainName = this.findDomain(URL);
         extensionName = this.findExtension(URL);
+        shouldRender = (typeof element === "boolean") ? false : true;
 
         if ((!domainName && !extensionName) || (services || {})[domainName] == olly.TEXT) {
             return "";
+        }
+
+        if(!shouldRender) {
+            element = shouldRender;
+            var returnMarkdown = {
+                scripts: new Array(),
+                markdown: ""
+            };
         }
 
         definition = (this.domains[domainName] || this.extensions[extensionName])(URL);
@@ -17,20 +26,35 @@
 
         if (templateObj && templateObj.scripts) {
             for (scriptIndex = 0; scriptIndex < templateObj.scripts.length; scriptIndex += 1) {
-                src = templateObj.scripts[scriptIndex];
-                this.loadScript(element, olly.generate(src, definition.data));
+                if(!shouldRender) {
+                    returnMarkdown.scripts.push(olly.generate(src, definition.data));
+                }
+                else {
+                    src = templateObj.scripts[scriptIndex];
+                    this.loadScript(element, olly.generate(src, definition.data));
+                }
             }
         }
 
-        if (definition.templatePromise) {
-            definition.templatePromise.then(function (templateObj) {
+        if(shouldRender) {
+            if (definition.templatePromise) {
+                definition.templatePromise.then(function (templateObj) {
+                    this.display(templateObj, definition.data, element);
+                });
+            } else {
                 this.display(templateObj, definition.data, element);
-            });
+            }
         } else {
-            this.display(templateObj, definition.data, element);
+            if (definition.templatePromise) {
+                definition.templatePromise.then(function (templateObj) {
+                    returnMarkdown.markdown = this.display(templateObj, definition.data, element);
+                });
+            } else {
+                returnMarkdown.markdown = this.display(templateObj, definition.data, element);
+            }
         }
-
-        return true;
+    
+        return (typeof returnMarkdown === "undefined") ? true : returnMarkdown;
     };
 
     olly.findDomain = function (URL) {
@@ -74,7 +98,7 @@
         return deferred.promise;
     };
 
-    olly.loadScript = function (element, src) {
+    olly.loadScript = function (element, src) {console.log("src:", src);
         var script;
         script = document.createElement('script');
         script.type = 'text/javascript';
@@ -86,7 +110,13 @@
         if (typeof templateObj === "string") {
             templateObj = {markup: templateObj};
         }
-        element.innerHTML = olly.generate(templateObj.markup, data);
+
+        if(!element) {
+            return olly.generate(templateObj.markup, data);
+        }
+        else {
+            element.innerHTML = olly.generate(templateObj.markup, data);
+        }
     };
 
     olly.generate = function (template, data) {

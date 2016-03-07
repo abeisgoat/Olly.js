@@ -29,7 +29,7 @@
         twitter_timeline: {
             markup: '<a class="twitter-timeline" href="{{embedURL}}"></a>',
             scripts: ['//platform.twitter.com/widgets.js']
-        },
+        },            
 
         github: {
             markup: '<div class="github-widget" data-repo="{{repo}}"></div>',
@@ -56,6 +56,8 @@
                 'http://assets.gfycat.com/js/gfyajax-0.517d.js'
             ]
         },
+
+        khanacademy: '<iframe frameborder="0" scrolling="no" width="560" height="355" src="{{embedURL}}" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>',
 
         video: {
             markup: '<video src="{{embedURL}}" controls="true" autoplay loop></video>'

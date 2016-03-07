@@ -1,4 +1,4 @@
-Olly.js (1.0)
+Olly.js (1.1)
 =======
 
 A JavaScript library to convert URLs into embedable HTML.
@@ -10,11 +10,11 @@ Example
 
 Usage
 -----
-Instal with bower or download dist/olly.js
+Install with bower or download dist/olly.js
 
     bower install Olly.js
 
-After being included with a `<script>` tag, Olly exposes the `olly` object (weird, right?). This object has one important method `olly.embed` The `.embed` method takes, at a minimum, a URL from a supported service and a DOM element. The method then fills the provided element with the rich media from the provided URL. For example, a link to a Youtube video will fill the provided element with an embedded Youtube player for the video:
+After being included with a `<script>` tag, Olly exposes the `olly` object (weird, right?). This object has one important method `olly.embed` The `.embed` method takes, at a minimum, a URL from a supported service and a DOM element (Or any boolean value if you'd rather have Olly return the html that would have been rendered). The method then fills the provided element with the rich media from the provided URL or it returns the html that will render the rich media. For example, a link to a Youtube video will fill the provided element with an embedded Youtube player for the video:
 
 ```js
 olly.embed("https://www.youtube.com/watch?v=x-8QAFqAAJ8", document.getElementById("youtube"));
@@ -25,6 +25,15 @@ This will fill `#youtube` with the following markup.
 ```html
 <embed width="420" height="345" src="http://www.youtube.com/v/x-8QAFqAAJ8" type="application/x-shockwave-flash">
 ```
+
+But if you simply feed any boolean value to the parameter that usually takes the element, like so:
+
+```js
+var richMedia = olly.embed("https://www.youtube.com/watch?v=x-8QAFqAAJ8", true);
+```
+
+Olly will then return an object filled with two main properties: `scripts` which contains an array of scripts that are needed for the rich media to work properly & `markdown` which contains the html that will compose the rich media.
+
 
 These methods can both take an optional `services` argument which allows you to specify which types of URLs should be embedded. For example, if we only want Youtube videos to be embedded, we can do this:
 
@@ -53,6 +62,7 @@ Supported Services
 * LiveLeak
 * Vine
 * TED
+* Khan Academy
 
 **Audio**
 

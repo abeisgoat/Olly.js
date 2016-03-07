@@ -175,7 +175,7 @@
             };
         },
 
-
+                
         // Twitch Structure
         twitch: function (URL) {
             return {
@@ -192,7 +192,19 @@
                     embedID: URL.pathchunks[0]
                 }
             };
+        },
+
+        // Khan Academy Video Structure
+        khanacademy: function (URL) {
+            var structure = {
+                template: 'khanacademy',
+                data: {
+                    embedURL: 'https://www.khanacademy.org/embed_video?v=' + URL.query.v
+                }
+            };
+            return structure;
         }
+
     };
 
 }(typeof module !== 'undefined' && module.exports? module.exports : window.olly));
